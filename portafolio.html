@@ -1,0 +1,316 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 import React, \{ useState \} from 'react';\
+import \{ ChevronRight, Mail, Linkedin, TrendingUp, Target, Zap, BarChart3, Eye, ShoppingCart \} from 'lucide-react';\
+\
+const Portfolio = () => \{\
+  const [activeCase, setActiveCase] = useState(0);\
+\
+  const cases = [\
+    \{\
+      id: 'mitzu',\
+      brand: 'Mitzu',\
+      subtitle: 'META ADS',\
+      period: 'Mayo - Octubre 2024',\
+      description: 'Marca mexicana con m\'e1s de 50 sucursales en audio profesional, entretenimiento y electr\'f3nica de consumo.',\
+      mainMetric: \{ value: '13.78', label: 'ROAS', icon: TrendingUp \},\
+      stats: [\
+        \{ label: 'Ventas', value: '$2.4M MXN' \},\
+        \{ label: 'Inversi\'f3n', value: '$234K' \},\
+        \{ label: 'Compras', value: '1,287' \},\
+        \{ label: 'CPA', value: '$135.97' \},\
+        \{ label: 'CPA Reducci\'f3n', value: '-46%', highlight: true \},\
+        \{ label: 'AOV Incremento', value: '+92%', highlight: true \},\
+      ],\
+      strategies: [\
+        'Full Funnel: tr\'e1fico, conversi\'f3n y remarketing',\
+        'A/B Testing de creatividades y mensajes',\
+        'Escalado horizontal optimizado',\
+        'Optimizaci\'f3n continua de CVR (+99% vs enero)'\
+      ],\
+      color: 'from-blue-500 to-cyan-500'\
+    \},\
+    \{\
+      id: 'citizen',\
+      brand: 'Citizen & Neutek',\
+      subtitle: 'AMAZON ADS',\
+      period: 'Octubre 2024 - Marzo 2025',\
+      description: 'Consolidaci\'f3n en el mercado de Amazon en categor\'edas de medidores de presi\'f3n y term\'f3metros.',\
+      mainMetric: \{ value: '6.67', label: 'ROAS', icon: ShoppingCart \},\
+      stats: [\
+        \{ label: 'Ventas', value: '$887K MXN' \},\
+        \{ label: 'Inversi\'f3n', value: '$132K' \},\
+        \{ label: 'Pedidos', value: '3,173' \},\
+        \{ label: 'AOV', value: '$339.93' \},\
+        \{ label: 'ACOS', value: '14.98%' \},\
+        \{ label: 'CPA', value: '$44.87' \},\
+      ],\
+      highlight: \{\
+        title: 'Producto Estrella',\
+        text: 'Medidor Citizen CH-617',\
+        metric: '$160K+ con ROAS 16.74'\
+      \},\
+      strategies: [\
+        'Testing de campa\'f1as manuales y autom\'e1ticas',\
+        'Optimizaci\'f3n de t\'e9rminos de b\'fasqueda',\
+        'Enfoque en productos de mayor ROI',\
+        'Ajuste din\'e1mico de presupuestos por KPIs'\
+      ],\
+      color: 'from-orange-500 to-red-500'\
+    \},\
+    \{\
+      id: 'foton',\
+      brand: 'Foton M\'e9xico',\
+      subtitle: 'GOOGLE & META ADS',\
+      period: 'Noviembre 2024 - Marzo 2025',\
+      description: 'Triplicaci\'f3n del rendimiento mensual de leads calificados en menos de 5 meses.',\
+      mainMetric: \{ value: '18,443', label: 'Leads', icon: Target \},\
+      stats: [\
+        \{ label: 'Meta Original', value: '1,200/mes' \},\
+        \{ label: 'Resultado', value: '4,361/mes', highlight: true \},\
+        \{ label: 'Clics', value: '100K+' \},\
+        \{ label: 'CTR', value: '15.32%' \},\
+        \{ label: 'CPR', value: '$65.58' \},\
+        \{ label: 'CVR', value: '2%' \},\
+      ],\
+      strategies: [\
+        'Segmentaci\'f3n por tipo: pickups, carga ligera y pesada',\
+        'Optimizaci\'f3n CRO del sitio web',\
+        'Mapas estrat\'e9gicos por intenci\'f3n de usuario',\
+        'Conversiones mejoradas por segmento',\
+        'Automatizaci\'f3n CAPI WhatsApp + CRM',\
+        'Business Intelligence con Looker Studio'\
+      ],\
+      color: 'from-green-500 to-emerald-500'\
+    \},\
+    \{\
+      id: 'mercedes',\
+      brand: 'Mercedes-Benz',\
+      subtitle: 'AUTOBUSES - GOOGLE ADS',\
+      period: 'Mayo - Julio 2024',\
+      description: 'Escalamiento de presupuesto con optimizaci\'f3n de performance en campa\'f1as clave.',\
+      mainMetric: \{ value: '1,504', label: 'Leads', icon: Zap \},\
+      stats: [\
+        \{ label: 'CPC Reducci\'f3n', value: '-84%', highlight: true \},\
+        \{ label: 'Conversiones', value: '+300%', highlight: true \},\
+        \{ label: 'Clics', value: '12,597' \},\
+        \{ label: 'CPR', value: '$33.60' \},\
+        \{ label: 'CTR', value: '1.30%' \},\
+        \{ label: 'Inversi\'f3n', value: '$50K' \},\
+      ],\
+      campaigns: [\
+        'Refacciones Mercedes-Benz',\
+        'Busstore 2025 (seminuevos)',\
+        'Limpiaparabrisas Bosch ECO'\
+      ],\
+      strategies: [\
+        'Performance Max + Display + Search',\
+        'Campa\'f1as por l\'ednea de negocio',\
+        'Optimizaci\'f3n de landing pages',\
+        'Remarketing estrat\'e9gico'\
+      ],\
+      color: 'from-purple-500 to-pink-500'\
+    \}\
+  ];\
+\
+  const currentCase = cases[activeCase];\
+\
+  return (\
+    <div className="min-h-screen bg-gray-50">\
+      \{/* Hero Section */\}\
+      <header className="bg-white border-b border-gray-200">\
+        <div className="max-w-6xl mx-auto px-6 py-16">\
+          <div className="space-y-6">\
+            <div>\
+              <h1 className="text-5xl font-light text-gray-900 mb-2">Andrea Jim\'e9nez</h1>\
+              <p className="text-2xl text-gray-600">Performance Strategist & Paid Media Specialist</p>\
+            </div>\
+            <p className="text-lg text-gray-500 max-w-2xl">\
+              Estrategia basada en datos, enfocada en resultados y optimizaci\'f3n continua.\
+            </p>\
+            <div className="flex gap-4">\
+              <a href="mailto:Andreatmosfera@gmail.com" className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition">\
+                <Mail size=\{20\} />\
+                <span>Andreatmosfera@gmail.com</span>\
+              </a>\
+              <a href="https://www.linkedin.com/in/andrea-jimenez-rodriguez-913922241/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition">\
+                <Linkedin size=\{20\} />\
+                <span>LinkedIn</span>\
+              </a>\
+            </div>\
+          </div>\
+        </div>\
+      </header>\
+\
+      \{/* Executive Summary */\}\
+      <section className="bg-white border-b border-gray-200">\
+        <div className="max-w-6xl mx-auto px-6 py-12">\
+          <h2 className="text-sm uppercase tracking-wider text-gray-500 mb-8">Resultados Destacados</h2>\
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8">\
+            <div>\
+              <div className="text-3xl font-light text-gray-900">13.78</div>\
+              <div className="text-sm text-gray-600 mt-1">ROAS R\'e9cord</div>\
+            </div>\
+            <div>\
+              <div className="text-3xl font-light text-gray-900">-46%</div>\
+              <div className="text-sm text-gray-600 mt-1">Reducci\'f3n CPA</div>\
+            </div>\
+            <div>\
+              <div className="text-3xl font-light text-gray-900">18K+</div>\
+              <div className="text-sm text-gray-600 mt-1">Leads Generados</div>\
+            </div>\
+            <div>\
+              <div className="text-3xl font-light text-gray-900">$2.4M</div>\
+              <div className="text-sm text-gray-600 mt-1">Ventas Totales</div>\
+            </div>\
+            <div>\
+              <div className="text-3xl font-light text-gray-900">+300%</div>\
+              <div className="text-sm text-gray-600 mt-1">Conversiones</div>\
+            </div>\
+          </div>\
+        </div>\
+      </section>\
+\
+      \{/* Case Studies Navigation */\}\
+      <section className="max-w-6xl mx-auto px-6 py-12">\
+        <h2 className="text-sm uppercase tracking-wider text-gray-500 mb-6">Casos de \'c9xito</h2>\
+        <div className="flex gap-2 mb-8 overflow-x-auto pb-2">\
+          \{cases.map((c, idx) => (\
+            <button\
+              key=\{c.id\}\
+              onClick=\{() => setActiveCase(idx)\}\
+              className=\{`px-6 py-3 rounded-lg transition whitespace-nowrap $\{\
+                activeCase === idx\
+                  ? 'bg-gray-900 text-white'\
+                  : 'bg-white text-gray-600 hover:bg-gray-100'\
+              \}`\}\
+            >\
+              \{c.brand\}\
+            </button>\
+          ))\}\
+        </div>\
+\
+        \{/* Active Case Study */\}\
+        <div className="bg-white rounded-2xl overflow-hidden shadow-sm">\
+          \{/* Header with gradient */\}\
+          <div className=\{`bg-gradient-to-r $\{currentCase.color\} p-8 text-white`\}>\
+            <div className="max-w-3xl">\
+              <div className="text-sm opacity-90 mb-2">\{currentCase.subtitle\}</div>\
+              <h3 className="text-4xl font-light mb-2">\{currentCase.brand\}</h3>\
+              <p className="text-sm opacity-90 mb-4">\{currentCase.period\}</p>\
+              <p className="text-base opacity-95">\{currentCase.description\}</p>\
+            </div>\
+          </div>\
+\
+          \{/* Main Metric */\}\
+          <div className="p-8 border-b border-gray-100">\
+            <div className="flex items-center gap-4">\
+              <div className=\{`w-16 h-16 rounded-full bg-gradient-to-r $\{currentCase.color\} flex items-center justify-center text-white`\}>\
+                <currentCase.mainMetric.icon size=\{32\} />\
+              </div>\
+              <div>\
+                <div className="text-5xl font-light text-gray-900">\{currentCase.mainMetric.value\}</div>\
+                <div className="text-gray-600">\{currentCase.mainMetric.label\}</div>\
+              </div>\
+            </div>\
+          </div>\
+\
+          \{/* Stats Grid */\}\
+          <div className="p-8 border-b border-gray-100">\
+            <h4 className="text-sm uppercase tracking-wider text-gray-500 mb-6">M\'e9tricas Clave</h4>\
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">\
+              \{currentCase.stats.map((stat, idx) => (\
+                <div key=\{idx\} className=\{`$\{stat.highlight ? 'bg-gray-50 p-4 rounded-lg' : ''\}`\}>\
+                  <div className=\{`text-2xl font-light $\{stat.highlight ? 'text-gray-900' : 'text-gray-800'\}`\}>\
+                    \{stat.value\}\
+                  </div>\
+                  <div className="text-sm text-gray-600 mt-1">\{stat.label\}</div>\
+                </div>\
+              ))\}\
+            </div>\
+          </div>\
+\
+          \{/* Highlight Box (if exists) */\}\
+          \{currentCase.highlight && (\
+            <div className="p-8 border-b border-gray-100">\
+              <div className=\{`bg-gradient-to-r $\{currentCase.color\} bg-opacity-5 p-6 rounded-lg border-l-4 border-gray-900`\}>\
+                <div className="text-sm uppercase tracking-wider text-gray-600 mb-2">\
+                  \{currentCase.highlight.title\}\
+                </div>\
+                <div className="text-xl font-light text-gray-900 mb-1">\
+                  \{currentCase.highlight.text\}\
+                </div>\
+                <div className="text-gray-600">\
+                  \{currentCase.highlight.metric\}\
+                </div>\
+              </div>\
+            </div>\
+          )\}\
+\
+          \{/* Campaigns (if exists) */\}\
+          \{currentCase.campaigns && (\
+            <div className="p-8 border-b border-gray-100">\
+              <h4 className="text-sm uppercase tracking-wider text-gray-500 mb-4">Campa\'f1as Clave</h4>\
+              <div className="space-y-2">\
+                \{currentCase.campaigns.map((campaign, idx) => (\
+                  <div key=\{idx\} className="flex items-center gap-2 text-gray-700">\
+                    <ChevronRight size=\{16\} />\
+                    <span>\{campaign\}</span>\
+                  </div>\
+                ))\}\
+              </div>\
+            </div>\
+          )\}\
+\
+          \{/* Strategies */\}\
+          <div className="p-8">\
+            <h4 className="text-sm uppercase tracking-wider text-gray-500 mb-4">Estrategias Implementadas</h4>\
+            <div className="space-y-3">\
+              \{currentCase.strategies.map((strategy, idx) => (\
+                <div key=\{idx\} className="flex items-start gap-3">\
+                  <div className="w-1.5 h-1.5 rounded-full bg-gray-900 mt-2 flex-shrink-0"></div>\
+                  <span className="text-gray-700">\{strategy\}</span>\
+                </div>\
+              ))\}\
+            </div>\
+          </div>\
+        </div>\
+      </section>\
+\
+      \{/* Skills */\}\
+      <section className="bg-white border-t border-gray-200">\
+        <div className="max-w-6xl mx-auto px-6 py-12">\
+          <h2 className="text-sm uppercase tracking-wider text-gray-500 mb-8">Expertise T\'e9cnico</h2>\
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">\
+            \{['Meta Ads', 'Google Ads', 'Amazon Ads', 'GA4', 'GTM', 'Looker Studio', 'Performance Max', 'CRM Integrations', 'WhatsApp CAPI', 'Business Intelligence', 'CRO', 'A/B Testing'].map((skill, idx) => (\
+              <div key=\{idx\} className="text-center py-4 px-6 bg-gray-50 rounded-lg">\
+                <span className="text-gray-800">\{skill\}</span>\
+              </div>\
+            ))\}\
+          </div>\
+        </div>\
+      </section>\
+\
+      \{/* Footer */\}\
+      <footer className="bg-gray-900 text-white">\
+        <div className="max-w-6xl mx-auto px-6 py-12 text-center">\
+          <h3 className="text-2xl font-light mb-4">\'bfListo para impulsar tu negocio?</h3>\
+          <p className="text-gray-400 mb-6">Estrategia basada en datos, resultados reales.</p>\
+          <a \
+            href="mailto:Andreatmosfera@gmail.com"\
+            className="inline-flex items-center gap-2 bg-white text-gray-900 px-8 py-3 rounded-lg hover:bg-gray-100 transition"\
+          >\
+            Contactar <ChevronRight size=\{20\} />\
+          </a>\
+        </div>\
+      </footer>\
+    </div>\
+  );\
+\};\
+\
+export default Portfolio;}

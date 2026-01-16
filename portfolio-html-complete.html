@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrea Jiménez - Performance Strategist & Paid Media Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        const ChevronRight = () => (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        );
+
+        const Mail = ({ size = 20 }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+        );
+
+        const Linkedin = ({ size = 20 }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+        );
+
+        const TrendingUp = ({ size = 32 }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                <polyline points="17 6 23 6 23 12"></polyline>
+            </svg>
+        );
+
+        const ShoppingCart = ({ size = 32 }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+        );
+
+        const Target = ({ size = 32 }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="6"></circle>
+                <circle cx="12" cy="12" r="2"></circle>
+            </svg>
+        );
+
+        const Zap = ({ size = 32 }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+        );
+
+        const Portfolio = () => {
+            const [activeCase, setActiveCase] = useState(0);
+
+            const cases = [
+                {
+                    id: 'mitzu',
+                    brand: 'Mitzu',
+                    subtitle: 'META ADS',
+                    period: 'Mayo - Octubre 2024',
+                    description: 'Marca mexicana con más de 50 sucursales en audio profesional, entretenimiento y electrónica de consumo.',
+                    mainMetric: { value: '13.78', label: 'ROAS', icon: TrendingUp },
+                    stats: [
+                        { label: 'Ventas', value: '$2.4M MXN' },
+                        { label: 'Inversión', value: '$234K' },
+                        { label: 'Compras', value: '1,287' },
+                        { label: 'CPA', value: '$135.97' },
+                        { label: 'CPA Reducción', value: '-46%', highlight: true },
+                        { label: 'AOV Incremento', value: '+92%', highlight: true },
+                    ],
+                    strategies: [
+                        'Full Funnel: tráfico, conversión y remarketing',
+                        'A/B Testing de creatividades y mensajes',
+                        'Escalado horizontal optimizado',
+                        'Optimización continua de CVR (+99% vs enero)'
+                    ],
+                    color: 'from-blue-500 to-cyan-500'
+                },
+                {
+                    id: 'citizen',
+                    brand: 'Citizen & Neutek',
+                    subtitle: 'AMAZON ADS',
+                    period: 'Octubre 2024 - Marzo 2025',
+                    description: 'Consolidación en el mercado de Amazon en categorías de medidores de presión y termómetros.',
+                    mainMetric: { value: '6.67', label: 'ROAS', icon: ShoppingCart },
+                    stats: [
+                        { label: 'Ventas', value: '$887K MXN' },
+                        { label: 'Inversión', value: '$132K' },
+                        { label: 'Pedidos', value: '3,173' },
+                        { label: 'AOV', value: '$339.93' },
+                        { label: 'ACOS', value: '14.98%' },
+                        { label: 'CPA', value: '$44.87' },
+                    ],
+                    highlight: {
+                        title: 'Producto Estrella',
+                        text: 'Medidor Citizen CH-617',
+                        metric: '$160K+ con ROAS 16.74'
+                    },
+                    strategies: [
+                        'Testing de campañas manuales y automáticas',
+                        'Optimización de términos de búsqueda',
+                        'Enfoque en productos de mayor ROI',
+                        'Ajuste dinámico de presupuestos por KPIs'
+                    ],
+                    color: 'from-orange-500 to-red-500'
+                },
+                {
+                    id: 'foton',
+                    brand: 'Foton México',
+                    subtitle: 'GOOGLE & META ADS',
+                    period: 'Noviembre 2024 - Marzo 2025',
+                    description: 'Triplicación del rendimiento mensual de leads calificados en menos de 5 meses.',
+                    mainMetric: { value: '18,443', label: 'Leads', icon: Target },
+                    stats: [
+                        { label: 'Meta Original', value: '1,200/mes' },
+                        { label: 'Resultado', value: '4,361/mes', highlight: true },
+                        { label: 'Clics', value: '100K+' },
+                        { label: 'CTR', value: '15.32%' },
+                        { label: 'CPR', value: '$65.58' },
+                        { label: 'CVR', value: '2%' },
+                    ],
+                    strategies: [
+                        'Segmentación por tipo: pickups, carga ligera y pesada',
+                        'Optimización CRO del sitio web',
+                        'Mapas estratégicos por intención de usuario',
+                        'Conversiones mejoradas por segmento',
+                        'Automatización CAPI WhatsApp + CRM',
+                        'Business Intelligence con Looker Studio'
+                    ],
+                    color: 'from-green-500 to-emerald-500'
+                },
+                {
+                    id: 'mercedes',
+                    brand: 'Mercedes-Benz',
+                    subtitle: 'AUTOBUSES - GOOGLE ADS',
+                    period: 'Mayo - Julio 2024',
+                    description: 'Escalamiento de presupuesto con optimización de performance en campañas clave.',
+                    mainMetric: { value: '1,504', label: 'Leads', icon: Zap },
+                    stats: [
+                        { label: 'CPC Reducción', value: '-84%', highlight: true },
+                        { label: 'Conversiones', value: '+300%', highlight: true },
+                        { label: 'Clics', value: '12,597' },
+                        { label: 'CPR', value: '$33.60' },
+                        { label: 'CTR', value: '1.30%' },
+                        { label: 'Inversión', value: '$50K' },
+                    ],
+                    campaigns: [
+                        'Refacciones Mercedes-Benz',
+                        'Busstore 2025 (seminuevos)',
+                        'Limpiaparabrisas Bosch ECO'
+                    ],
+                    strategies: [
+                        'Performance Max + Display + Search',
+                        'Campañas por línea de negocio',
+                        'Optimización de landing pages',
+                        'Remarketing estratégico'
+                    ],
+                    color: 'from-purple-500 to-pink-500'
+                }
+            ];
+
+            const currentCase = cases[activeCase];
+            const MainMetricIcon = currentCase.mainMetric.icon;
+
+            return (
+                <div className="min-h-screen bg-gray-50">
+                    <header className="bg-white border-b border-gray-200">
+                        <div className="max-w-6xl mx-auto px-6 py-16">
+                            <div className="space-y-6">
+                                <div>
+                                    <h1 className="text-5xl font-light text-gray-900 mb-2">Andrea Jiménez</h1>
+                                    <p className="text-2xl text-gray-600">Performance Strategist & Paid Media Specialist</p>
+                                </div>
+                                <p className="text-lg text-gray-500 max-w-2xl">
+                                    Estrategia basada en datos, enfocada en resultados y optimización continua.
+                                </p>
+                                <div className="flex gap-4">
+                                    <a href="mailto:Andreatmosfera@gmail.com" className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition">
+                                        <Mail size={20} />
+                                        <span>Andreatmosfera@gmail.com</span>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/andrea-jimenez-rodriguez-913922241/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition">
+                                        <Linkedin size={20} />
+                                        <span>LinkedIn</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+
+                    <section className="bg-white border-b border-gray-200">
+                        <div className="max-w-6xl mx-auto px-6 py-12">
+                            <h2 className="text-sm uppercase tracking-wider text-gray-500 mb-8">Resultados Destacados</h2>
+                            <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+                                <div>
+                                    <div className="text-3xl font-light text-gray-900">13.78</div>
+                                    <div className="text-sm text-gray-600 mt-1">ROAS Récord</div>
+                                </div>
+                                <div>
+                                    <div className="text-3xl font-light text-gray-900">-46%</div>
+                                    <div className="text-sm text-gray-600 mt-1">Reducción CPA</div>
+                                </div>
+                                <div>
+                                    <div className="text-3xl font-light text-gray-900">18K+</div>
+                                    <div className="text-sm text-gray-600 mt-1">Leads Generados</div>
+                                </div>
+                                <div>
+                                    <div className="text-3xl font-light text-gray-900">$2.4M</div>
+                                    <div className="text-sm text-gray-600 mt-1">Ventas Totales</div>
+                                </div>
+                                <div>
+                                    <div className="text-3xl font-light text-gray-900">+300%</div>
+                                    <div className="text-sm text-gray-600 mt-1">Conversiones</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="max-w-6xl mx-auto px-6 py-12">
+                        <h2 className="text-sm uppercase tracking-wider text-gray-500 mb-6">Casos de Éxito</h2>
+                        <div className="flex gap-2 mb-8 overflow-x-auto pb-2">
+                            {cases.map((c, idx) => (
+                                <button
+                                    key={c.id}
+                                    onClick={() => setActiveCase(idx)}
+                                    className={`px-6 py-3 rounded-lg transition whitespace-nowrap ${
+                                        activeCase === idx
+                                            ? 'bg-gray-900 text-white'
+                                            : 'bg-white text-gray-600 hover:bg-gray-100'
+                                    }`}
+                                >
+                                    {c.brand}
+                                </button>
+                            ))}
+                        </div>
+
+                        <div className="bg-white rounded-2xl overflow-hidden shadow-sm">
+                            <div className={`bg-gradient-to-r ${currentCase.color} p-8 text-white`}>
+                                <div className="max-w-3xl">
+                                    <div className="text-sm opacity-90 mb-2">{currentCase.subtitle}</div>
+                                    <h3 className="text-4xl font-light mb-2">{currentCase.brand}</h3>
+                                    <p className="text-sm opacity-90 mb-4">{currentCase.period}</p>
+                                    <p className="text-base opacity-95">{currentCase.description}</p>
+                                </div>
+                            </div>
+
+                            <div className="p-8 border-b border-gray-100">
+                                <div className="flex items-center gap-4">
+                                    <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${currentCase.color} flex items-center justify-center text-white`}>
+                                        <MainMetricIcon size={32} />
+                                    </div>
+                                    <div>
+                                        <div className="text-5xl font-light text-gray-900">{currentCase.mainMetric.value}</div>
+                                        <div className="text-gray-600">{currentCase.mainMetric.label}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="p-8 border-b border-gray-100">
+                                <h4 className="text-sm uppercase tracking-wider text-gray-500 mb-6">Métricas Clave</h4>
+                                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                                    {currentCase.stats.map((stat, idx) => (
+                                        <div key={idx} className={stat.highlight ? 'bg-gray-50 p-4 rounded-lg' : ''}>
+                                            <div className={`text-2xl font-light ${stat.highlight ? 'text-gray-900' : 'text-gray-800'}`}>
+                                                {stat.value}
+                                            </div>
+                                            <div className="text-sm text-gray-600 mt-1">{stat.label}</div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {currentCase.highlight && (
+                                <div className="p-8 border-b border-gray-100">
+                                    <div className={`bg-gradient-to-r ${currentCase.color} bg-opacity-5 p-6 rounded-lg border-l-4 border-gray-900`}>
+                                        <div className="text-sm uppercase tracking-wider text-gray-600 mb-2">
+                                            {currentCase.highlight.title}
+                                        </div>
+                                        <div className="text-xl font-light text-gray-900 mb-1">
+                                            {currentCase.highlight.text}
+                                        </div>
+                                        <div className="text-gray-600">
+                                            {currentCase.highlight.metric}
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {currentCase.campaigns && (
+                                <div className="p-8 border-b border-gray-100">
+                                    <h4 className="text-sm uppercase tracking-wider text-gray-500 mb-4">Campañas Clave</h4>
+                                    <div className="space-y-2">
+                                        {currentCase.campaigns.map((campaign, idx) => (
+                                            <div key={idx} className="flex items-center gap-2 text-gray-700">
+                                                <ChevronRight />
+                                                <span>{campaign}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
+                            <div className="p-8">
+                                <h4 className="text-sm uppercase tracking-wider text-gray-500 mb-4">Estrategias Implementadas</h4>
+                                <div className="space-y-3">
+                                    {currentCase.strategies.map((strategy, idx) => (
+                                        <div key={idx} className="flex items-start gap-3">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-gray-900 mt-2 flex-shrink-0"></div>
+                                            <span className="text-gray-700">{strategy}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="bg-white border-t border-gray-200">
+                        <div className="max-w-6xl mx-auto px-6 py-12">
+                            <h2 className="text-sm uppercase tracking-wider text-gray-500 mb-8">Expertise Técnico</h2>
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                {['Meta Ads', 'Google Ads', 'Amazon Ads', 'GA4', 'GTM', 'Looker Studio', 'Performance Max', 'CRM Integrations', 'WhatsApp CAPI', 'Business Intelligence', 'CRO', 'A/B Testing'].map((skill, idx) => (
+                                    <div key={idx} className="text-center py-4 px-6 bg-gray-50 rounded-lg">
+                                        <span className="text-gray-800">{skill}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    <footer className="bg-gray-900 text-white">
+                        <div className="max-w-6xl mx-auto px-6 py-12 text-center">
+                            <h3 className="text-2xl font-light mb-4">¿Listo para impulsar tu negocio?</h3>
+                            <p className="text-gray-400 mb-6">Estrategia basada en datos, resultados reales.</p>
+                            <a 
+                                href="mailto:Andreatmosfera@gmail.com"
+                                className="inline-flex items-center gap-2 bg-white text-gray-900 px-8 py-3 rounded-lg hover:bg-gray-100 transition"
+                            >
+                                Contactar <ChevronRight />
+                            </a>
+                        </div>
+                    </footer>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<Portfolio />);
+    </script>
+</body>
+</html>
